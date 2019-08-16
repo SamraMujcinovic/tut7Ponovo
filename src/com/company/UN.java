@@ -20,4 +20,13 @@ public class UN {
     public void setDrzave(ArrayList<Drzava> drzave) {
         this.drzave = drzave;
     }
+
+    @Override
+    public String toString() {
+        String s = "";
+        for(Drzava d:drzave){
+            s+= d + "\n";
+        }
+        return s;
+    }
 }

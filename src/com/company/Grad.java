@@ -42,4 +42,16 @@ public class Grad {
         public void setTemperature(double[] temperature) {
             this.temperature = temperature;
         }
+
+    @Override
+    public String toString() {
+        String s = "" + naziv + " ima " + brojStanovnika + "\nTemperature za ovaj grad su: ";
+        for(int i=0; i<brojTemperatura;i++){
+            if(i!=brojTemperatura-2)
+            s += temperature[i] + ", ";
+            else s+=temperature[i];
+        }
+        return s;
+
+    }
 }

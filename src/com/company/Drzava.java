@@ -62,4 +62,10 @@ public class Drzava {
     public void setGrad(Grad grad) {
         this.grad = grad;
     }
+
+    @Override
+    public String toString() {
+        String s = "" + naziv + " ima " + brojStanovnika + " povrsine: " + povrsina + " " + jedinicaZaPovrsinu + ", glavni grad je " + grad.getNaziv();
+        return s;
+    }
 }

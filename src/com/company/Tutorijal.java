@@ -22,6 +22,10 @@ public class Tutorijal {
 
     public static void main(String[] args){
 
+        ArrayList<Grad> gradovi = ucitajGradove();
+        UN un = ucitajXml(gradovi);
+
+        System.out.println(un);
     }
     public static ArrayList<Grad> ucitajGradove() {
 
@@ -48,8 +52,8 @@ public class Tutorijal {
             nizRed = red.split(",");
             if(nizRed.length > 1001) throw new IndexOutOfBoundsException("Previse mjerenja temperature!");
             double[] temperature = new double[1000];
-            for(int j = 0; j<nizRed.length;j++){
-                temperature[j] = Double.parseDouble(nizRed[j + 1]);
+            for(int j = 1; j<nizRed.length;j++){
+                temperature[j-1] = Double.parseDouble(nizRed[j]);
             }
             Grad grad = new Grad(nizRed[0], 0, temperature, nizRed.length);
             gradoviIzDatoteke.add(grad);
@@ -90,7 +94,7 @@ public class Tutorijal {
 
                     Element povrsinaXml = (Element) drzavaEl.getElementsByTagName("povrsina").item(0);
                     String jedinica = povrsinaXml.getAttribute("jedinica");
-                    Double povrsina= Double.parseDouble(povrsinaXml.getElementsByTagName("povrsina").item(0).getTextContent());
+                    double povrsina = Double.parseDouble(drzavaEl.getElementsByTagName("povrsina").item(0).getTextContent());
 
                     Grad grad1 = new Grad(nazivGrada, brStanovnikaGrada, null, 0);
                     Drzava drzava1 = new Drzava(nazivDrzave, brojStanovnika, povrsina, jedinica, grad1);
